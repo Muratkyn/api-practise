@@ -1,4 +1,26 @@
 
+const btnHandler = document.querySelector('.btn')
+
+const clickHandler = () => {
+
+    const dataFetcher = () => {
+        fetch('https://reqres.in/api/users')
+            .then(res => {
+                if(!res.ok) {  //guard clause//
+                    console.log("somethign went wrong")
+                    return;
+                }
+               return res.json()
+            }).then(data => {
+                console.log(data.data[3].first_name)
+            }).catch(error => {
+                console.log('error occured', error)
+            })
+    }
+    dataFetcher()
+}
+btnHandler.addEventListener('click', clickHandler)
+
 //syntactical sugar///
 const fetchData = async () => {
     try {
@@ -15,18 +37,4 @@ const fetchData = async () => {
     }
 }
 // traditional .then method//
-const dataFetcher = () => {
-    fetch('http//regres.in/api/users')
-        .then(res => {
-            if(!res.ok) {  //guard clause//
-                console.log("somethign went wrong")
-                return;
-            }
-            res.json()
-        }).then(data => {
-            console.log(data)
-        }).catch(error => {
-            console.log(error)
-        })
-}
     
