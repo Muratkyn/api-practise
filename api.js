@@ -1,3 +1,4 @@
+//traditional .then method
 
 const btnHandler = document.querySelector('.btn')
 
@@ -21,7 +22,7 @@ const clickHandler = () => {
 }
 btnHandler.addEventListener('click', clickHandler)
 
-//syntactical sugar///
+//syntactical sugar
 const fetchData = async () => {
     try {
         const res = await fetch('http//regres.in/api/users')
@@ -36,5 +37,19 @@ const fetchData = async () => {
         console.log(error)
     }
 }
-// traditional .then method//
-    
+// post method//
+
+const newUser = {
+    name: "murat",
+    role: "player"
+}
+
+const addNewUser = () => {
+    fetch('https://reqres.in/api/users', {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
